@@ -1,0 +1,13 @@
+before_install:
+  - mv gradle.properties.fake gradle.properties
+install: true
+language: java
+jdk:
+  - oraclejdk11
+
+script:
+  - ./gradlew check
+  - ./gradlew jacocoTestReport
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
